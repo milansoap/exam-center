@@ -1,7 +1,7 @@
 package examcenter.backend.controllers;
 
 import examcenter.backend.models.Exam;
-import examcenter.backend.repository.ExamRepository;
+import examcenter.backend.services.ExamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,11 +14,11 @@ import java.util.List;
 public class ExamController {
 
     @Autowired
-    private ExamRepository examRepository;
+    private ExamService examService;
 
     @GetMapping
     public List<Exam> getAllExams() {
-        return examRepository.findAll();
+        return examService.getAllExams();
     }
 
 }
