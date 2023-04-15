@@ -8,6 +8,11 @@ import ExamList from './components/exams/ExamList';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import ExamDetails from './components/exams/ExamDetails';
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+
 
 
 
@@ -20,6 +25,10 @@ const router = createBrowserRouter([
         path: '/exams',
         element: <ExamList />,
       },
+      {
+        path:"exams/:id",
+        element: <ExamDetails />
+      }
     ],
   },
 

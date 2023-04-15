@@ -14,14 +14,30 @@ export default function ExamList() {
     fetchData();
   }, []);
 
-  console.log(exams)
-
+  async function handleExamDelete(examId) {
+    try {
+      await ApiService.deleteExam(examId);
+      const data = await ApiService.getExams();
+      setExams(data);
+    } catch (error) {
+      console.log(`An error occurred while deleting exam ${examId}: ${error.message}`);
+    }
+  }
+  
   return (
     <div>
-      working
-      {exams.map((exam) => (
-        <ExamItem key={exam.id} exam={exam} />
+        <div className="list-group">
+        {exams.map((exam) => (
+        <ExamItem key={exam.id} exam={exam} onDelete={handleExamDelete} />
       ))}
+      </div>
+      
     </div>
   );
 }
+
+
+
+
+
+
