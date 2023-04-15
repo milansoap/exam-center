@@ -12,7 +12,7 @@ public class ExamCancellationService {
     @Autowired
     private ExamCancellationRepository examCancellationRepository;
 
-    public List<ExamCancellation> getAllExamCancellations() {
+    public List<ExamCancellation> findAllExamCancellations() {
         return examCancellationRepository.findAll();
     }
 }
