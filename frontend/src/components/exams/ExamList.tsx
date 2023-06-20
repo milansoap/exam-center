@@ -1,43 +1,72 @@
 import React, { useState, useEffect } from 'react';
-import ApiService from '../../services/ApiService';
 import { Exam } from '../../models/Exam';
+import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
+import ApiService from '../../services/ApiService';
 import { ExamItem } from './exams';
-export default function ExamList() {
+import { FilterOption } from '../../models/fetchMethod';
 
+
+export default function ExamList() {
   const [exams, setExams] = useState<Exam[]>([]);
+  const [filteredExams, setFilteredExams] = useState<Exam[]>([]);
+  const [filterOption, setFilterOption] = useState(FilterOption.All);
 
   useEffect(() => {
-    async function fetchData() {
-      const data = await ApiService.getExams();
-      setExams(data);
-    }
-    fetchData();
+    fetchExams();
   }, []);
 
-  async function handleExamDelete(examId) {
+  useEffect(() => {
+    filterExams();
+  }, [filterOption]);
+
+  const fetchExams = async () => {
     try {
-      await ApiService.deleteExam(examId);
-      const data = await ApiService.getExams();
-      setExams(data);
+      const fetchedExams: Exam[] = await ApiService.getExams();
+      setExams(fetchedExams);
+      setFilteredExams(fetchedExams);
     } catch (error) {
-      console.log(`An error occurred while deleting exam ${examId}: ${error.message}`);
+      console.error('Failed to fetch exams:', error);
     }
-  }
-  
+  };
+
+  const filterExams = () => {
+    switch (filterOption) {
+      case FilterOption.All:
+        setFilteredExams(exams);
+        break;
+      case FilterOption.Cancelled:
+        setFilteredExams(exams.filter((exam) => exam.cancelled == 1));
+        break;
+      case FilterOption.Past:
+        setFilteredExams(exams.filter((exam) => new Date(exam.dateAndTime) < new Date()));
+        break;
+      default:
+        setFilteredExams(exams);
+        break;
+    }
+  };
+
+  const handleFilterOptionChange = (option: FilterOption) => {
+    setFilterOption(option);
+  };
+
   return (
-    <div>
-        <div className="list-group">
-        {exams.map((exam) => (
-        <ExamItem key={exam.id} exam={exam} onDelete={handleExamDelete} />
-      ))}
+    <div className="container">
+      <div className="header">
+        <h1>Exams</h1>
+        <hr />
+        <Dropdown
+          options={Object.values(FilterOption)}
+          value={filterOption}
+          onChange={(e) => handleFilterOptionChange(e.value as FilterOption)}
+        />
       </div>
-      
+      <div className="examList">          
+        {filteredExams.map((exam) => (
+          <ExamItem key={exam.id} exam={exam} typeOfFilter={filterOption} />
+        ))}
+              </div>
     </div>
   );
 }
-
-
-
-
-
-

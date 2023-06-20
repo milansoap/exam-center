@@ -76,4 +76,14 @@ public class Exam {
         this.cancelled = cancelled;
     }
 
+    @Override
+    public String toString() {
+        return "Exam{" +
+                "id=" + id +
+                ", location='" + location + '\'' +
+                ", field='" + field + '\'' +
+                ", dateAndTime=" + dateAndTime +
+                ", cancelled=" + cancelled +
+                '}';
+    }
 }

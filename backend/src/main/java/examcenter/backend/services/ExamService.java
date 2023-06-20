@@ -32,5 +32,24 @@ public class ExamService {
         }
     }
 
+    public Exam addExam(Exam exam) {
+        return examRepository.save(exam);
+    }
+
+    public Exam updateExam(Long id, Exam exam) {
+        Exam existingExam = examRepository.findById(id).orElse(null);
+        if (existingExam != null) {
+            existingExam.setLocation(exam.getLocation());
+            existingExam.setField(exam.getField());
+            existingExam.setDateAndTime(exam.getDateAndTime());
+            existingExam.setCancelled(exam.isCancelled());
+            examRepository.save(existingExam);
+            return existingExam;
+        } else {
+            return null;
+        }
+    }
+
+
 
 }

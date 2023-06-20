@@ -19,8 +19,9 @@ public class Examinee {
     private String lastName;
     @Column(name = "date_of_birth")
     private Date dateOfBirth;
-    @Column(name = "adress")
-    private String adress;
+    @Column(name = "address")
+    private String address;
+
 
     public Examinee() {
 
@@ -30,7 +31,7 @@ public class Examinee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
-        this.adress = adress;
+        this.address = adress;
     }
 
     public Long getId() {
@@ -66,10 +67,10 @@ public class Examinee {
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.address = adress;
     }
 }

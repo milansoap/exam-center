@@ -3,5 +3,5 @@ export class Exam {
     location!: string;
     field!: string;
     dateAndTime!: Date;
-    canceled!: number;
+    cancelled!: number;
   }

@@ -20,8 +20,7 @@ public class ExamExaminee {
     public ExamExaminee() {
     }
 
-    public ExamExaminee(Long id, Exam exam, Examinee examinee) {
-        this.id = id;
+    public ExamExaminee(Exam exam, Examinee examinee) {
         this.exam = exam;
         this.examinee = examinee;
     }

@@ -1,13 +1,55 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+body,
+html {
+  font-family: 'Inter', sans-serif !important;
+  background-color: #f3f3f3 !important;
+
+  /* 👇️ or use Operating system default fonts 👇️ */
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    sans-serif; */
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+.outlayItem {
+  border: 1px solid;
+  border-color: #E2E2E2;
+  box-shadow: inset;
+  border-radius: 3vh;
+  margin-bottom: 2vh;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
+  height: 15vh;
+}
+
+.insideItem {
+  margin: 3vh;
+}
+.right-content {
+  display: flex;
+  gap: 10px; /* Add gap between the buttons */
+}
+
+.p-button-rounded {
+  border-radius: 5px; /* Adjust the value to control the amount of rounding */
+}
+
+.larger-button {
+  padding: 10px 20px; /* Adjust padding values as needed */
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+.header {
+  text-align: center;
+  margin: 2vh;
+}
+
+.containerCustom {
+  margin-left: 60pt;
+  margin-right: 60pt;
+  margin-top: 30pt;
+  margin-bottom: 20pt;
+}
+
+.icon-container {
+  margin: 10pt;
 }

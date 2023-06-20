@@ -11,20 +11,19 @@ public class ExamCancellation {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
     @JoinColumn(name = "exam_id")
-    private Exam exam;
+    private Long examId;
 
     @Column(name = "reason")
     private String reason;
 
-    public ExamCancellation(Long id, Exam exam, String reason) {
-        this.id = id;
-        this.exam = exam;
+    public ExamCancellation(long examId, String reason) {
+        this.examId = examId;
         this.reason = reason;
     }
 
     public ExamCancellation() {
+
     }
 
     public Long getId() {
@@ -35,12 +34,12 @@ public class ExamCancellation {
         this.id = id;
     }
 
-    public Exam getExam() {
-        return exam;
+    public long getExamId() {
+        return examId;
     }
 
-    public void setExam(Exam exam) {
-        this.exam = exam;
+    public void setExamId(long examId) {
+        this.examId = examId;
     }
 
     public String getReason() {
@@ -49,5 +48,14 @@ public class ExamCancellation {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    @Override
+    public String toString() {
+        return "ExamCancellation{" +
+                "id=" + id +
+                ", examId=" + examId +
+                ", reason='" + reason + '\'' +
+                '}';
     }
 }

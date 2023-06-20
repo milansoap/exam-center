@@ -12,6 +12,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ExamDetails from './components/exams/ExamDetails';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
+import Examinees from './components/exams/Examinees';
+import AddExam from './components/exams/AddExam';
+import Dashboard from './components/shared/dashboard';
 
 
 
@@ -26,8 +29,16 @@ const router = createBrowserRouter([
         element: <ExamList />,
       },
       {
-        path:"exams/:id",
+        path: "exams/:id",
         element: <ExamDetails />
+      },
+      {
+        path: "/exam-list",
+        element: <Examinees />
+      },
+      {
+        path: "/add-Exam",
+        element: <AddExam />
       }
     ],
   },
@@ -39,7 +50,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-        <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
